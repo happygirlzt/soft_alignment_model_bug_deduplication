@@ -15,8 +15,7 @@ import codecs
 import logging
 import re
 import string
-from collections import Counter, OrderedDict
-from io import StringIO
+from collections import Counter
 
 from nltk import SnowballStemmer
 from nltk.corpus import stopwords

@@ -1,6 +1,5 @@
 import logging
 from math import log
-from time import time
 import numpy as np
 
 SUN_REPORT_ID_INDEX = 0

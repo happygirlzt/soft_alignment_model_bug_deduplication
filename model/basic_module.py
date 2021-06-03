@@ -162,7 +162,7 @@ class RNNEncoder(nn.Module):
         input = self.embedding(x) if self.embedding else x
 
         if self.isLengthVariable:
-            input = nn.utils.rnn.pack_padded_sequence(input, lengths, batch_first=True)
+            input = nn.utils.rnn.pack_padded_sequence(input, lengths.cpu(), batch_first=True)
 
         output, hidden = self.rnnEncoder(input, initialHidden)
 

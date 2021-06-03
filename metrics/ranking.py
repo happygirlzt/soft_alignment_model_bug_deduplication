@@ -1,21 +1,17 @@
 '''
 Calculates Recall Rate @ k
 '''
-import datetime
 import itertools
 import logging
 import math
-import multiprocessing
 import os
 import pickle
 import random
-from datetime import timedelta
 from multiprocessing import Queue
 
 from queue import Empty
 
 import numpy as np
-import ujson
 from scipy.sparse import csr_matrix
 from sklearn.metrics.pairwise import cosine_similarity
 from torch.utils.data import DataLoader
