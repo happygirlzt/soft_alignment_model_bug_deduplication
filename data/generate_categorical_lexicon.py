@@ -35,7 +35,3 @@ if __name__ == '__main__':
         dict[f] = unk + list(s)
 
     json.dump(dict, open(args.output, 'w'))
-
-
-
-

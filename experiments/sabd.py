@@ -26,27 +26,31 @@ from data.bug_dataset import BugDataset
 from data.bug_report_database import BugReportDatabase
 from data.collate import PairBugCollate, TripletBugCollate
 from data.dataset import PairBugDatasetReader, TripletBugDatasetReader
-from data.input_handler import RNNInputHandler, SABDInputHandler
+from data.input_handler import SABDInputHandler
 from data.preprocessing import PreprocessingCache, \
     MultiLineTokenizer, \
     loadFilters, PreprocessorList, \
-    SummaryDescriptionPreprocessor, SABDEncoderPreprocessor, SABDBoWPreprocessor
+    SABDEncoderPreprocessor, SABDBoWPreprocessor
 from example_generator.offline_pair_geneneration import NonNegativeRandomGenerator, RandomGenerator, KRandomGenerator, \
     MiscNonZeroRandomGen, PreSelectedGenerator, MiscOfflineGenerator, PositivePreSelectedGenerator, \
     ProductComponentRandomGen
 from metrics.metric import AverageLoss, MeanScoreDistance, ConfusionMatrix, PredictionCache, cmAccuracy, cmPrecision, \
-    cmRecall, Accuracy, AccuracyWrapper, PrecisionWrapper, RecallWrapper, LossWrapper
+    cmRecall, AccuracyWrapper, PrecisionWrapper, RecallWrapper, LossWrapper
 from metrics.ranking import PreselectListRanking, DeshmukhRanking, GeneralScorer, SunRanking, generateRecommendationList
 from model.compare_aggregate import SABD
 from model.loss import TripletLoss
 from util.jsontools import JsonLogFormatter
 from util.siamese_util import processCategoricalParam
 from util.torch_util import thresholded_output_transform
-from util.training_loop_util import logMetrics, logRankingResult, logConfusionMatrix
+from util.training_loop_util import logMetrics, logRankingResult
 
 ex = Experiment("filter_model")
 
 logger = logging.getLogger()
+file_handler = logging.FileHandler('satd_openoffice.log')
+file_handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s: %(message)s', datefmt = '%F %A %T'))
+logger.addHandler(file_handler)
+
 logger.setLevel(logging.INFO)
 logHandler = logging.StreamHandler()
 formatter = JsonLogFormatter()
